@@ -1,0 +1,333 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #000000;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+.lamp-wrapper-main {
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+.lamp-rope {
+  position: absolute;
+  width: 8px;
+  height: 1200px;
+  background: #fff;
+  bottom: 100%;
+  margin: auto;
+}
+.lamp-inner {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  z-index: 2;
+}
+.lamp-main {
+  background-color: #fff;
+  transform: skewX(-5deg);
+  height: 100px;
+  width: 60%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.lamp-main.top-wrapper {
+  background: transparent;
+  position: absolute;
+  width: 130px;
+  height: 20px;
+  left: 6px;
+  top: -17px;
+}
+.lamp-main.top-left-wrapper {
+  width: 50%;
+  height: 20px;
+  left: 0;
+  top: 0;
+  transform: skewX(-5deg);
+  border-radius: 80% 0 0 0;
+}
+.lamp-main.top-right-wrapper {
+  width: 50%;
+  height: 20px;
+  left: 0;
+  top: 0;
+  transform: skewX(-5deg);
+  border-radius: 80% 0 0 0;
+}
+.lamp-main.right-wrapper {
+  transform: skewX(5deg);
+  left: auto;
+  right: 1px;
+  border-radius: 0 80% 0 0;
+}
+.lamp-main.lamp-center-right {
+  transform: skewX(5deg);
+  left: auto;
+  right: 0;
+}
+.lamp-main.lamp-bottom:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #fff;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.lamp-main.lamp-bottom {
+  background: linear-gradient(#fffffa, #fdffb2);
+  height: 30px;
+  width: 150px;
+  position: absolute;
+  top: auto;
+  bottom: -18px;
+  left: -5px;
+  border-radius: 50%;
+  border-top: 3px solid #000;
+  border-bottom: 2px solid #000;
+}
+.lamp-blub {
+  position: absolute;
+  width: 120px;
+  height: 80px;
+  top: 10px;
+  left: 10px;
+  border-radius: 5% 3% 38% 40%;
+  background-color: #fdffb2;
+  -webkit-filter: blur(15px);
+  filter: blur(15px);
+  z-index: 2;
+  opacity: 0;
+  transition: all 300ms;
+}
+.lamp-lamp-shadow {
+  background: linear-gradient(#ffffed, #000 30%);
+  width: 80%;
+  height: 200vh;
+  position: absolute;
+  top: 150%;
+  left: auto;
+  border-radius: 50% 50% 0 0;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  z-index: -1;
+  opacity: 0;
+  transition: all 300ms;
+}
+.lamp-input {
+  width: 200px;
+  padding: 15px;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 1px 1px 25px rgb(0 0 0 / 10%);
+}
+.lamp-input .icon-sun i {
+  font-size: 20px;
+}
+input {
+  --c: #00008b;
+  /* active color */
+  --g: 2px;
+  /* the gap */
+  --l: 5px;
+  /* line thickness*/
+  --s: 20px;
+  /* thumb size*/
+
+  width: 100%;
+  height: var(--s);
+  /* needed for Firefox*/
+  --_c: color-mix(in srgb, var(--c), #000 var(--p, 0%));
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+input:focus-visible,
+input:hover {
+  --p: 25%;
+}
+
+input:active,
+input:focus-visible {
+  --_b: var(--s);
+}
+
+/* chromium */
+input[type="range" i]::-webkit-slider-thumb {
+  height: var(--s);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+  border-image: linear-gradient(90deg, var(--_c) 50%, #ababab 0) 1/0 100vw/0
+    calc(100vw + var(--g));
+  clip-path: polygon(
+    0 calc(50% + var(--l) / 2),
+    -100vw calc(50% + var(--l) / 2),
+    -100vw calc(50% - var(--l) / 2),
+    0 calc(50% - var(--l) / 2),
+    0 0,
+    100% 0,
+    100% calc(50% - var(--l) / 2),
+    100vw calc(50% - var(--l) / 2),
+    100vw calc(50% + var(--l) / 2),
+    100% calc(50% + var(--l) / 2),
+    100% 100%,
+    0 100%
+  );
+  -webkit-appearance: none;
+  appearance: none;
+  transition: 0.3s;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: var(--s);
+  width: var(--s);
+  background: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--_b, var(--l)) inset var(--_c);
+  border-image: linear-gradient(90deg, var(--_c) 50%, #ababab 0) 1/0 100vw/0
+    calc(100vw + var(--g));
+  clip-path: polygon(
+    0 calc(50% + var(--l) / 2),
+    -100vw calc(50% + var(--l) / 2),
+    -100vw calc(50% - var(--l) / 2),
+    0 calc(50% - var(--l) / 2),
+    0 0,
+    100% 0,
+    100% calc(50% - var(--l) / 2),
+    100vw calc(50% - var(--l) / 2),
+    100vw calc(50% + var(--l) / 2),
+    100% calc(50% + var(--l) / 2),
+    100% 100%,
+    0 100%
+  );
+  -moz-appearance: none;
+  appearance: none;
+  transition: 0.3s;
+}
+
+@supports not (color: color-mix(in srgb, red, red)) {
+  input {
+    --_c: var(--c);
+  }
+}
+
+body[data-light^="1"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.1;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.9;
+  }
+}
+
+body[data-light^="2"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.2;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.8;
+  }
+}
+
+body[data-light^="3"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.3;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.7;
+  }
+}
+
+body[data-light^="4"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.4;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.6;
+  }
+}
+
+body[data-light^="5"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.5;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.5;
+  }
+}
+
+body[data-light^="6"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.6;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.4;
+  }
+}
+
+body[data-light^="7"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.7;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.3;
+  }
+}
+
+body[data-light^="8"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.8;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.2;
+  }
+}
+
+body[data-light^="9"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 0.9;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0.1;
+  }
+}
+
+body[data-light="10"] {
+  .lamp-blub,
+  .lamp-lamp-shadow {
+    opacity: 1;
+  }
+  .lamp-main.lamp-bottom:before {
+    opacity: 0;
+  }
+}
